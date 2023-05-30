@@ -5,8 +5,9 @@ class RemoteNewsService {
   static var client = http.Client();
 
   static Future<List<NewsArticle>?> fetchNewsArticle() async {
+    var apiKey = "Your Api Key Goes here";
     var response = await client.get(Uri.parse(
-        "https://newsapi.org/v2/everything?q=tesla&from=2023-04-30&sortBy=publishedAt&apiKey=67fb99b0351b4cd39ac8afdddc0d75f3"));
+        "https://newsapi.org/v2/everything?q=tesla&from=2023-04-30&sortBy=publishedAt&apiKey=$apiKey"));
 
     if (response.statusCode == 200) {
       return newsArticleFromJson(response.body);
